@@ -6,18 +6,19 @@ import net.runelite.api.Skill;
 
 public class Player
 {
-    PlayerLevels levels;
-    PlayerPrayers prayers;
-    PlayerBoosts boosts;
-    PlayerEquipment equipment;
-    CombatOption combatOption;
+    public PlayerLevels levels;
+    public PlayerPrayers prayers;
+    public PlayerBoosts boosts;
+    public PlayerEquipment equipment;
+    public CombatOption combatOption;
 
-    Player(PlayerLevels levels, PlayerPrayers prayers, PlayerBoosts boosts, PlayerEquipment equipment)
+    Player()
     {
-        this.levels = levels;
-        this.prayers = prayers;
-        this.boosts = boosts;
-        this.equipment = equipment;
+        levels = new PlayerLevels();
+        prayers = new PlayerPrayers();
+        boosts = new PlayerBoosts();
+        equipment = new PlayerEquipment();
+        combatOption = CombatOption.UNARMED_PUNCH;
     }
 
     public int GetAttackStyleBonus(Skill skill)

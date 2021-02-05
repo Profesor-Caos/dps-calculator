@@ -1,5 +1,6 @@
 package com.dpscalculator;
 
+import com.data.DpsCalculator;
 import com.data.PlayerLevels;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,16 +21,16 @@ public class PlayerLevelsPanel extends JPanel
 {
     SkillIconManager skillIconManager = new SkillIconManager();
 
-    @Getter
-    private PlayerLevels stats;
-
     private HashMap<Skill, JSpinner> editorMap = new HashMap<>();
 
-    public PlayerLevelsPanel()
+    private DpsCalculator calculator;
+
+    public PlayerLevelsPanel(DpsCalculator calculator)
     {
-        stats = new PlayerLevels();
-        for (Skill skill : stats.Skills)
-            stats.SetLevel(skill, (int)(Math.random() * 99) + 1);
+        this.calculator = calculator;
+
+        for (Skill skill : calculator.player.levels.Skills)
+            calculator.player.levels.SetLevel(skill, (int)(Math.random() * 99) + 1);
         BuildUI();
         UpdateSpinners();
     }
@@ -45,7 +46,7 @@ public class PlayerLevelsPanel extends JPanel
         int i = 0;
         int rows = 3;
         int cols = 3;
-        for (Skill skill : stats.Skills) {
+        for (Skill skill : calculator.player.levels.Skills) {
             JPanel skillPanel = new JPanel();
             skillPanel.setLayout(new BoxLayout(skillPanel, BoxLayout.LINE_AXIS));
             skillPanel.setToolTipText(skill.getName());
@@ -77,10 +78,10 @@ public class PlayerLevelsPanel extends JPanel
 
     void UpdateSpinners()
     {
-        for (Skill skill : stats.Skills)
+        for (Skill skill : calculator.player.levels.Skills)
         {
             String skillName = skill.getName();
-            int value = stats.GetLevel(skill);
+            int value = calculator.player.levels.GetLevel(skill);
             // Get the Panel/JSpinner for the skill and update it.
             JSpinner spinner = editorMap.get(skill);
             spinner.getModel().setValue(value);

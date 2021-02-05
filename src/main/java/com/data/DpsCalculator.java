@@ -5,10 +5,11 @@ import net.runelite.api.Skill;
 
 public class DpsCalculator
 {
-    Player player;
+    public Player player;
 
-    DpsCalculator(Player player)
+    public DpsCalculator()
     {
+        player = new Player();
     }
 
     int GetMeleeMaxHit()

@@ -3,12 +3,13 @@ package com.data;
 import net.runelite.api.Prayer;
 import net.runelite.api.Skill;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class PlayerPrayers
 {
-    List<PrayerType> ActivePrayers;
+    List<PrayerType> ActivePrayers = new ArrayList<>();
 
     void TogglePrayer(PrayerType prayer)
     {
