@@ -1,6 +1,6 @@
 package com.data.weapontypes;
 
-public enum AttackTypes
+public enum AttackType
 {
     NONE,
     STAB,
